@@ -4,7 +4,7 @@ A [Homey Pro](https://homey.app) app for **Orbit B-hyve** smart watering product
 
 This project is a full port of the [Home Assistant B-hyve integration](https://github.com/sebr/bhyve-home-assistant) to the Homey Apps SDK v3.
 
-> **Status: 🚧 Planning / pre-build.** Research and architecture docs are being assembled in [`docs/`](docs/). Implementation has not started yet.
+> **Status: 🚧 Planning complete, ready to build.** Research and architecture docs are in [`docs/`](docs/) — see [PLAN.md](docs/PLAN.md) for milestones. Implementation starts at M0 (scaffold).
 
 ## Goals
 
