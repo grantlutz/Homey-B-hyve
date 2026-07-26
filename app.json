@@ -357,6 +357,7 @@
       "class": "sprinkler",
       "capabilities": [
         "onoff",
+        "manual_watering_minutes",
         "watering_time_remaining",
         "next_start",
         "smart_watering",
@@ -1065,6 +1066,24 @@
     ]
   },
   "capabilities": {
+    "manual_watering_minutes": {
+      "type": "number",
+      "title": {
+        "en": "Water for"
+      },
+      "units": {
+        "en": "min"
+      },
+      "min": 1,
+      "max": 120,
+      "step": 1,
+      "decimals": 0,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "slider",
+      "insights": false,
+      "icon": "/assets/capabilities/timer.svg"
+    },
     "next_start": {
       "type": "string",
       "title": {

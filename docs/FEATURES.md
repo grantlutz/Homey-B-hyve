@@ -113,6 +113,7 @@ Deviations from and additions to the plan above, decided during implementation a
 - **Extra tokens/conditions**: watering triggers carry zone name, station, and the resolved program *name*; a "watering is held by the rain sensor" condition exposes `rain_sensor_hold`; the next-watering text appends upcoming program letters.
 - **Adaptive capabilities**: `measure_battery`/`alarm_battery` are removed on mains-powered controllers and `measure_moisture` on zones without landscape calibration, instead of showing blank values.
 - **Info labels**: model/firmware/MAC on timers and flood sensors, last-connected on timers.
+- **Manual runs from the device UI**: zones have a "Water for" slider (1–120 min, seeded from the device preset) that starts a manual run at the chosen duration directly from the device view, without needing a Flow.
 - **Bridge matching dropped**: per-device `is_connected` plus WS-outage handling covers availability; `device_gateway_topic` is unused.
 - **Skipped as niche**: `battery_charging_state` (B-hyve battery models don't charge), program created/deleted app-level triggers.
 

@@ -5,6 +5,7 @@
   "class": "sprinkler",
   "capabilities": [
     "onoff",
+    "manual_watering_minutes",
     "watering_time_remaining",
     "next_start",
     "smart_watering",

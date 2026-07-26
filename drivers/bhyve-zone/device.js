@@ -25,6 +25,11 @@ class BhyveZoneDevice extends BhyveDevice {
       await this.app.setSmartWatering(this.orbitDeviceId, value);
     });
 
+    // Manual run straight from the device UI: slide to a duration and go.
+    this.registerCapabilityListener('manual_watering_minutes', async value => {
+      await this.startWatering(value);
+    });
+
     this._countdownTimer = null;
     await super.onInit();
   }
@@ -87,6 +92,13 @@ class BhyveZoneDevice extends BhyveDevice {
 
     const zone = this.app.store.getZone(this.orbitDeviceId, this.station);
     const presetSec = device.manual_preset_runtime_sec;
+
+    // Seed the manual-run slider with the device preset; after that the
+    // user's last chosen duration wins.
+    if (this.getCapabilityValue('manual_watering_minutes') === null) {
+      const seed = presetSec ? Math.round(presetSec / 60) : C.DEFAULT_WATER_MINUTES;
+      await this.safeSet('manual_watering_minutes', Math.max(1, Math.min(120, seed)));
+    }
     await this.setSettings({
       ...(zone ? {
         station: String(this.station),
