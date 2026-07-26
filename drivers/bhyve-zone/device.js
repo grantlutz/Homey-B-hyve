@@ -29,6 +29,12 @@ class BhyveZoneDevice extends BhyveDevice {
     await super.onInit();
   }
 
+  async onSettings({ oldSettings, newSettings, changedKeys }) {
+    if (changedKeys.includes('default_watering_minutes')) {
+      await this.app.setPresetRuntime(this.orbitDeviceId, newSettings.default_watering_minutes);
+    }
+  }
+
   async onUninit() {
     this._stopCountdown();
     await super.onUninit();
@@ -73,13 +79,15 @@ class BhyveZoneDevice extends BhyveDevice {
     await this.safeSet('next_start', this._formatNextStart(status));
 
     const zone = this.app.store.getZone(this.orbitDeviceId, this.station);
-    if (zone) {
-      await this.setSettings({
+    const presetSec = device.manual_preset_runtime_sec;
+    await this.setSettings({
+      ...(zone ? {
         station: String(this.station),
         sprinkler_type: zone.sprinkler_type || '',
         timer_name: device.name || '',
-      }).catch(() => { /* settings may be mid-edit */ });
-    }
+      } : {}),
+      ...(presetSec ? { default_watering_minutes: Math.round(presetSec / 60) } : {}),
+    }).catch(() => { /* settings may be mid-edit */ });
   }
 
   _syncCountdown(status, watering) {

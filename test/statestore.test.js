@@ -108,6 +108,28 @@ test('repeated watering_in_progress for same station does not re-trigger start',
   assert.equal(started.length, 1);
 });
 
+test('station transition emits watering_stopped for the previous zone', () => {
+  const store = makeStore();
+  const stopped = [];
+  store.on('watering_stopped', e => stopped.push(e));
+  store.applyEvent({
+    event: 'watering_in_progress_notification',
+    device_id: DEVICE_ID, current_station: 1, run_time: 10, program: 'a',
+    started_watering_station_at: '2026-07-26T06:00:00Z',
+  });
+  store.applyEvent({
+    event: 'watering_in_progress_notification',
+    device_id: DEVICE_ID, current_station: 2, run_time: 5, program: 'a',
+  });
+  assert.equal(stopped.length, 1);
+  assert.equal(stopped[0].station, 1);
+  assert.equal(stopped[0].program, 'a');
+  assert.equal(store.isWatering(DEVICE_ID, 2), true);
+  store.applyEvent({ event: 'watering_complete', device_id: DEVICE_ID });
+  assert.equal(stopped.length, 2);
+  assert.equal(stopped[1].station, 2);
+});
+
 test('rain_delay sets and clears', () => {
   const store = makeStore();
   const changes = [];

@@ -95,12 +95,7 @@ class BhyveTimerDriver extends Homey.Driver {
   }
 
   async onRepair(session, _device) {
-    this.homey.app.registerLoginHandlers(session);
-    session.setHandler('login', async data => {
-      const ok = await this.homey.app.setCredentials(data.username, data.password)
-        .then(() => true).catch(() => false);
-      return ok;
-    });
+    this.homey.app.registerLoginHandlers(session, { repair: true });
   }
 
   async _listDevices() {

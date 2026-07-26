@@ -66,7 +66,14 @@ class BhyveApp extends Homey.App {
     this.client.on('token', token => this.homey.settings.set('token', token));
     this.client.on('auth_failed', () => this._onAuthFailed());
 
-    await this.refresh({ fresh: true });
+    // A transient failure here must not leave the app half-connected —
+    // the websocket 'connected' handler and the poll timer both retry.
+    try {
+      await this.refresh({ fresh: true });
+    } catch (err) {
+      if (err instanceof OrbitAuthError) throw err;
+      this.error(`Initial refresh failed, will retry: ${err.message}`);
+    }
 
     this.ws = new OrbitWebSocket({
       getToken: () => this.client?.token,
@@ -247,7 +254,7 @@ class BhyveApp extends Homey.App {
   }
 
   /** Pairing/repair helper shared by all drivers. */
-  registerLoginHandlers(session) {
+  registerLoginHandlers(session, { repair = false } = {}) {
     session.setHandler('login', async data => {
       try {
         await this.setCredentials(data.username, data.password);
@@ -257,12 +264,14 @@ class BhyveApp extends Homey.App {
         throw err;
       }
     });
-    session.setHandler('showView', async viewId => {
-      // Already logged in? Skip straight to device selection.
-      if (viewId === 'login_credentials' && this.isConnected()) {
-        await session.showView('list_devices');
-      }
-    });
+    if (!repair) {
+      session.setHandler('showView', async viewId => {
+        // Already logged in? Skip straight to device selection.
+        if (viewId === 'login_credentials' && this.isConnected()) {
+          await session.showView('list_devices');
+        }
+      });
+    }
   }
 
   /** Make sure we have live account data for pairing lists. */

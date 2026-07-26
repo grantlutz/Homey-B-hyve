@@ -11,7 +11,7 @@ class BhyveFloodSensorDriver extends Homey.Driver {
   }
 
   async onRepair(session, _device) {
-    this.homey.app.registerLoginHandlers(session);
+    this.homey.app.registerLoginHandlers(session, { repair: true });
   }
 
   async _listDevices() {

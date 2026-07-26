@@ -2,6 +2,30 @@
   {
     "type": "group",
     "label": {
+      "en": "Behavior"
+    },
+    "children": [
+      {
+        "id": "default_watering_minutes",
+        "type": "number",
+        "label": {
+          "en": "Default watering time"
+        },
+        "hint": {
+          "en": "Runtime used when the zone is switched on without a duration. Stored on the B-hyve timer, so it is shared by all zones of the same timer. Not supported by every model."
+        },
+        "value": 5,
+        "min": 1,
+        "max": 1440,
+        "units": {
+          "en": "min"
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
       "en": "Zone information"
     },
     "children": [
