@@ -1,0 +1,1067 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.orbitbhyve",
+  "version": "0.1.0",
+  "compatibility": ">=12.2.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Orbit B-hyve"
+  },
+  "description": {
+    "en": "Smart watering with Orbit B-hyve timers and flood sensors"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "brandColor": "#1470a6",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Grant Lutz",
+    "email": "grant.lutz@gmail.com"
+  },
+  "source": "https://github.com/grantlutz/Homey-B-hyve",
+  "bugs": {
+    "url": "https://github.com/grantlutz/Homey-B-hyve/issues"
+  },
+  "support": "https://github.com/grantlutz/Homey-B-hyve/issues",
+  "drivers": [
+    {
+      "name": {
+        "en": "B-hyve Flood Sensor"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "alarm_water",
+        "alarm_heat",
+        "measure_temperature",
+        "measure_battery",
+        "alarm_battery",
+        "measure_signal_strength"
+      ],
+      "capabilitiesOptions": {
+        "alarm_heat": {
+          "title": {
+            "en": "Temperature alert"
+          }
+        }
+      },
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/bhyve-flood-sensor/assets/images/small.png",
+        "large": "/drivers/bhyve-flood-sensor/assets/images/large.png",
+        "xlarge": "/drivers/bhyve-flood-sensor/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Log in with your B-hyve account"
+            },
+            "usernameLabel": {
+              "en": "E-mail address"
+            },
+            "usernamePlaceholder": {
+              "en": "you@example.com"
+            },
+            "passwordLabel": {
+              "en": "Password"
+            },
+            "passwordPlaceholder": {
+              "en": "Password"
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Log in again with your B-hyve account"
+            }
+          }
+        }
+      ],
+      "id": "bhyve-flood-sensor",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Sensor information"
+          },
+          "children": [
+            {
+              "id": "location",
+              "type": "label",
+              "label": {
+                "en": "Location"
+              },
+              "value": ""
+            },
+            {
+              "id": "auto_shutoff",
+              "type": "label",
+              "label": {
+                "en": "Auto shut-off"
+              },
+              "value": ""
+            },
+            {
+              "id": "temp_low",
+              "type": "label",
+              "label": {
+                "en": "Low temperature alert"
+              },
+              "value": ""
+            },
+            {
+              "id": "temp_high",
+              "type": "label",
+              "label": {
+                "en": "High temperature alert"
+              },
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "B-hyve Sprinkler Timer"
+      },
+      "class": "sprinkler",
+      "capabilities": [
+        "run_mode",
+        "rain_delay_active",
+        "rain_delay_remaining",
+        "next_start",
+        "measure_battery",
+        "alarm_battery",
+        "alarm_generic"
+      ],
+      "capabilitiesOptions": {
+        "alarm_generic": {
+          "title": {
+            "en": "Station fault"
+          }
+        }
+      },
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/bhyve-timer/assets/images/small.png",
+        "large": "/drivers/bhyve-timer/assets/images/large.png",
+        "xlarge": "/drivers/bhyve-timer/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Log in with your B-hyve account"
+            },
+            "usernameLabel": {
+              "en": "E-mail address"
+            },
+            "usernamePlaceholder": {
+              "en": "you@example.com"
+            },
+            "passwordLabel": {
+              "en": "Password"
+            },
+            "passwordPlaceholder": {
+              "en": "Password"
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Log in again with your B-hyve account"
+            }
+          }
+        }
+      ],
+      "id": "bhyve-timer",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Behavior"
+          },
+          "children": [
+            {
+              "id": "default_rain_delay_hours",
+              "type": "number",
+              "label": {
+                "en": "Default rain delay"
+              },
+              "hint": {
+                "en": "Hours of rain delay applied when the rain delay toggle is switched on."
+              },
+              "value": 24,
+              "min": 1,
+              "max": 999,
+              "units": {
+                "en": "h"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Device information"
+          },
+          "children": [
+            {
+              "id": "model",
+              "type": "label",
+              "label": {
+                "en": "Model"
+              },
+              "value": ""
+            },
+            {
+              "id": "firmware",
+              "type": "label",
+              "label": {
+                "en": "Firmware"
+              },
+              "value": ""
+            },
+            {
+              "id": "mac",
+              "type": "label",
+              "label": {
+                "en": "MAC address"
+              },
+              "value": ""
+            },
+            {
+              "id": "stations",
+              "type": "label",
+              "label": {
+                "en": "Zones"
+              },
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "B-hyve Watering Zone"
+      },
+      "class": "sprinkler",
+      "capabilities": [
+        "onoff",
+        "watering_time_remaining",
+        "next_start",
+        "smart_watering",
+        "measure_moisture",
+        "meter_water"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "title": {
+            "en": "Watering"
+          },
+          "insightsTitleTrue": {
+            "en": "Started watering"
+          },
+          "insightsTitleFalse": {
+            "en": "Stopped watering"
+          },
+          "duration": true
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/bhyve-zone/assets/images/small.png",
+        "large": "/drivers/bhyve-zone/assets/images/large.png",
+        "xlarge": "/drivers/bhyve-zone/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Log in with your B-hyve account"
+            },
+            "usernameLabel": {
+              "en": "E-mail address"
+            },
+            "usernamePlaceholder": {
+              "en": "you@example.com"
+            },
+            "passwordLabel": {
+              "en": "Password"
+            },
+            "passwordPlaceholder": {
+              "en": "Password"
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Log in again with your B-hyve account"
+            }
+          }
+        }
+      ],
+      "id": "bhyve-zone",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Zone information"
+          },
+          "children": [
+            {
+              "id": "station",
+              "type": "label",
+              "label": {
+                "en": "Station number"
+              },
+              "value": ""
+            },
+            {
+              "id": "sprinkler_type",
+              "type": "label",
+              "label": {
+                "en": "Sprinkler type"
+              },
+              "value": ""
+            },
+            {
+              "id": "timer_name",
+              "type": "label",
+              "label": {
+                "en": "Timer"
+              },
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "flow": {
+    "triggers": [
+      {
+        "id": "rain_delay_started",
+        "title": {
+          "en": "Rain delay started"
+        },
+        "tokens": [
+          {
+            "name": "hours",
+            "type": "number",
+            "title": {
+              "en": "Hours"
+            },
+            "example": 24
+          },
+          {
+            "name": "cause",
+            "type": "string",
+            "title": {
+              "en": "Cause"
+            },
+            "example": "auto"
+          },
+          {
+            "name": "weather",
+            "type": "string",
+            "title": {
+              "en": "Weather type"
+            },
+            "example": "rain"
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          }
+        ]
+      },
+      {
+        "id": "rain_delay_ended",
+        "title": {
+          "en": "Rain delay ended"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          }
+        ]
+      },
+      {
+        "id": "mode_changed",
+        "title": {
+          "en": "Mode changed"
+        },
+        "tokens": [
+          {
+            "name": "mode",
+            "type": "string",
+            "title": {
+              "en": "Mode"
+            },
+            "example": "auto"
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          }
+        ]
+      },
+      {
+        "id": "station_fault",
+        "title": {
+          "en": "Station fault detected"
+        },
+        "tokens": [
+          {
+            "name": "faults",
+            "type": "string",
+            "title": {
+              "en": "Faults"
+            },
+            "example": "short_circuit"
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          }
+        ]
+      },
+      {
+        "id": "watering_started",
+        "title": {
+          "en": "Watering started"
+        },
+        "tokens": [
+          {
+            "name": "program",
+            "type": "string",
+            "title": {
+              "en": "Program"
+            },
+            "example": "a"
+          },
+          {
+            "name": "minutes",
+            "type": "number",
+            "title": {
+              "en": "Planned minutes"
+            },
+            "example": 10
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-zone"
+          }
+        ]
+      },
+      {
+        "id": "watering_finished",
+        "title": {
+          "en": "Watering finished"
+        },
+        "tokens": [
+          {
+            "name": "program",
+            "type": "string",
+            "title": {
+              "en": "Program"
+            },
+            "example": "a"
+          },
+          {
+            "name": "minutes",
+            "type": "number",
+            "title": {
+              "en": "Minutes watered"
+            },
+            "example": 10
+          },
+          {
+            "name": "gallons",
+            "type": "number",
+            "title": {
+              "en": "Gallons used"
+            },
+            "example": 12.5
+          },
+          {
+            "name": "litres",
+            "type": "number",
+            "title": {
+              "en": "Litres used"
+            },
+            "example": 47.3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-zone"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "rain_delay_is_active",
+        "title": {
+          "en": "Rain delay !{{is|isn't}} active"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          }
+        ]
+      },
+      {
+        "id": "mode_is",
+        "title": {
+          "en": "Mode !{{is|isn't}} ..."
+        },
+        "titleFormatted": {
+          "en": "Mode !{{is|isn't}} [[mode]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "auto",
+                "title": {
+                  "en": "Auto"
+                }
+              },
+              {
+                "id": "off",
+                "title": {
+                  "en": "Off"
+                }
+              },
+              {
+                "id": "manual",
+                "title": {
+                  "en": "Manual"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "program_is_enabled",
+        "title": {
+          "en": "A program !{{is|isn't}} enabled"
+        },
+        "titleFormatted": {
+          "en": "Program [[program]] !{{is|isn't}} enabled"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          },
+          {
+            "name": "program",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Program..."
+            }
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "set_rain_delay",
+        "title": {
+          "en": "Set a rain delay"
+        },
+        "titleFormatted": {
+          "en": "Delay watering for [[hours]] hours"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          },
+          {
+            "name": "hours",
+            "type": "number",
+            "min": 1,
+            "max": 999,
+            "placeholder": {
+              "en": "24"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cancel_rain_delay",
+        "title": {
+          "en": "Cancel the rain delay"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          }
+        ]
+      },
+      {
+        "id": "set_mode",
+        "title": {
+          "en": "Set the mode"
+        },
+        "titleFormatted": {
+          "en": "Set the mode to [[mode]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "auto",
+                "title": {
+                  "en": "Auto"
+                }
+              },
+              {
+                "id": "off",
+                "title": {
+                  "en": "Off"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "run_program",
+        "title": {
+          "en": "Run a program"
+        },
+        "titleFormatted": {
+          "en": "Run program [[program]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          },
+          {
+            "name": "program",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Program..."
+            }
+          }
+        ]
+      },
+      {
+        "id": "set_program_enabled",
+        "title": {
+          "en": "Enable or disable a program"
+        },
+        "titleFormatted": {
+          "en": "[[state]] program [[program]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          },
+          {
+            "name": "program",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Program..."
+            }
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "enable",
+                "title": {
+                  "en": "Enable"
+                }
+              },
+              {
+                "id": "disable",
+                "title": {
+                  "en": "Disable"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_program_budget",
+        "title": {
+          "en": "Set a program's watering budget"
+        },
+        "titleFormatted": {
+          "en": "Set program [[program]] budget to [[budget]] %"
+        },
+        "hint": {
+          "en": "Scales all run times of the program: 100% is normal, 50% waters half as long."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          },
+          {
+            "name": "program",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Program..."
+            }
+          },
+          {
+            "name": "budget",
+            "type": "number",
+            "min": 0,
+            "max": 200,
+            "placeholder": {
+              "en": "100"
+            }
+          }
+        ]
+      },
+      {
+        "id": "start_watering",
+        "title": {
+          "en": "Water for a number of minutes"
+        },
+        "titleFormatted": {
+          "en": "Water for [[minutes]] minutes"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-zone"
+          },
+          {
+            "name": "minutes",
+            "type": "number",
+            "min": 1,
+            "max": 1440,
+            "placeholder": {
+              "en": "10"
+            }
+          }
+        ]
+      },
+      {
+        "id": "stop_watering",
+        "title": {
+          "en": "Stop watering"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-zone"
+          }
+        ]
+      },
+      {
+        "id": "set_preset_runtime",
+        "title": {
+          "en": "Set the default watering time"
+        },
+        "titleFormatted": {
+          "en": "Set the default watering time to [[minutes]] minutes"
+        },
+        "hint": {
+          "en": "The runtime used when the zone is switched on without a duration. Not supported by every B-hyve model."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-zone"
+          },
+          {
+            "name": "minutes",
+            "type": "number",
+            "min": 1,
+            "max": 1440,
+            "placeholder": {
+              "en": "5"
+            }
+          }
+        ]
+      },
+      {
+        "id": "set_soil_moisture",
+        "title": {
+          "en": "Set the soil moisture"
+        },
+        "titleFormatted": {
+          "en": "Set the soil moisture to [[percent]] %"
+        },
+        "hint": {
+          "en": "Tells smart watering how wet the soil is, so it can replan. Only for zones with smart watering enabled."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-zone"
+          },
+          {
+            "name": "percent",
+            "type": "number",
+            "min": 0,
+            "max": 100,
+            "placeholder": {
+              "en": "50"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "capabilities": {
+    "next_start": {
+      "type": "string",
+      "title": {
+        "en": "Next watering"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/next_start.svg"
+    },
+    "rain_delay_active": {
+      "type": "boolean",
+      "title": {
+        "en": "Rain delay"
+      },
+      "titleTrue": {
+        "en": "Active"
+      },
+      "titleFalse": {
+        "en": "Inactive"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "toggle",
+      "insights": true,
+      "icon": "/assets/capabilities/rain_delay.svg"
+    },
+    "rain_delay_remaining": {
+      "type": "number",
+      "title": {
+        "en": "Rain delay remaining"
+      },
+      "units": {
+        "en": "h"
+      },
+      "min": 0,
+      "max": 999,
+      "decimals": 1,
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/capabilities/rain_delay.svg"
+    },
+    "run_mode": {
+      "type": "enum",
+      "title": {
+        "en": "Mode"
+      },
+      "values": [
+        {
+          "id": "auto",
+          "title": {
+            "en": "Auto"
+          }
+        },
+        {
+          "id": "off",
+          "title": {
+            "en": "Off"
+          }
+        },
+        {
+          "id": "manual",
+          "title": {
+            "en": "Manual"
+          }
+        }
+      ],
+      "getable": true,
+      "setable": true,
+      "uiComponent": "picker",
+      "icon": "/assets/capabilities/mode.svg"
+    },
+    "smart_watering": {
+      "type": "boolean",
+      "title": {
+        "en": "Smart watering"
+      },
+      "titleTrue": {
+        "en": "Enabled"
+      },
+      "titleFalse": {
+        "en": "Disabled"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "toggle",
+      "icon": "/assets/capabilities/smart.svg"
+    },
+    "watering_time_remaining": {
+      "type": "number",
+      "title": {
+        "en": "Watering time remaining"
+      },
+      "units": {
+        "en": "min"
+      },
+      "min": 0,
+      "max": 1440,
+      "decimals": 0,
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "icon": "/assets/capabilities/timer.svg"
+    }
+  }
+}

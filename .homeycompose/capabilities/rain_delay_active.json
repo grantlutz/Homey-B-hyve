@@ -1,0 +1,17 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Rain delay"
+  },
+  "titleTrue": {
+    "en": "Active"
+  },
+  "titleFalse": {
+    "en": "Inactive"
+  },
+  "getable": true,
+  "setable": true,
+  "uiComponent": "toggle",
+  "insights": true,
+  "icon": "/assets/capabilities/rain_delay.svg"
+}

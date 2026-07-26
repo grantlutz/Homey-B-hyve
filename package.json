@@ -1,0 +1,15 @@
+{
+  "name": "com.orbitbhyve",
+  "version": "0.1.0",
+  "description": "Orbit B-hyve for Homey Pro",
+  "main": "app.js",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "homey-apps-sdk-v3-types": "^0.3.5"
+  }
+}

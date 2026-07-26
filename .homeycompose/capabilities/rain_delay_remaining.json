@@ -1,0 +1,17 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Rain delay remaining"
+  },
+  "units": {
+    "en": "h"
+  },
+  "min": 0,
+  "max": 999,
+  "decimals": 1,
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": false,
+  "icon": "/assets/capabilities/rain_delay.svg"
+}

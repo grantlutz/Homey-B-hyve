@@ -1,0 +1,30 @@
+{
+  "id": "com.orbitbhyve",
+  "version": "0.1.0",
+  "compatibility": ">=12.2.0",
+  "sdk": 3,
+  "platforms": ["local"],
+  "name": {
+    "en": "Orbit B-hyve"
+  },
+  "description": {
+    "en": "Smart watering with Orbit B-hyve timers and flood sensors"
+  },
+  "category": ["climate"],
+  "permissions": [],
+  "brandColor": "#1470a6",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Grant Lutz",
+    "email": "grant.lutz@gmail.com"
+  },
+  "source": "https://github.com/grantlutz/Homey-B-hyve",
+  "bugs": {
+    "url": "https://github.com/grantlutz/Homey-B-hyve/issues"
+  },
+  "support": "https://github.com/grantlutz/Homey-B-hyve/issues"
+}

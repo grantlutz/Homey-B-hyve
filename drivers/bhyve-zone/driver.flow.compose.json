@@ -1,0 +1,142 @@
+{
+  "triggers": [
+    {
+      "id": "watering_started",
+      "title": {
+        "en": "Watering started"
+      },
+      "tokens": [
+        {
+          "name": "program",
+          "type": "string",
+          "title": {
+            "en": "Program"
+          },
+          "example": "a"
+        },
+        {
+          "name": "minutes",
+          "type": "number",
+          "title": {
+            "en": "Planned minutes"
+          },
+          "example": 10
+        }
+      ]
+    },
+    {
+      "id": "watering_finished",
+      "title": {
+        "en": "Watering finished"
+      },
+      "tokens": [
+        {
+          "name": "program",
+          "type": "string",
+          "title": {
+            "en": "Program"
+          },
+          "example": "a"
+        },
+        {
+          "name": "minutes",
+          "type": "number",
+          "title": {
+            "en": "Minutes watered"
+          },
+          "example": 10
+        },
+        {
+          "name": "gallons",
+          "type": "number",
+          "title": {
+            "en": "Gallons used"
+          },
+          "example": 12.5
+        },
+        {
+          "name": "litres",
+          "type": "number",
+          "title": {
+            "en": "Litres used"
+          },
+          "example": 47.3
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "start_watering",
+      "title": {
+        "en": "Water for a number of minutes"
+      },
+      "titleFormatted": {
+        "en": "Water for [[minutes]] minutes"
+      },
+      "args": [
+        {
+          "name": "minutes",
+          "type": "number",
+          "min": 1,
+          "max": 1440,
+          "placeholder": {
+            "en": "10"
+          }
+        }
+      ]
+    },
+    {
+      "id": "stop_watering",
+      "title": {
+        "en": "Stop watering"
+      }
+    },
+    {
+      "id": "set_preset_runtime",
+      "title": {
+        "en": "Set the default watering time"
+      },
+      "titleFormatted": {
+        "en": "Set the default watering time to [[minutes]] minutes"
+      },
+      "hint": {
+        "en": "The runtime used when the zone is switched on without a duration. Not supported by every B-hyve model."
+      },
+      "args": [
+        {
+          "name": "minutes",
+          "type": "number",
+          "min": 1,
+          "max": 1440,
+          "placeholder": {
+            "en": "5"
+          }
+        }
+      ]
+    },
+    {
+      "id": "set_soil_moisture",
+      "title": {
+        "en": "Set the soil moisture"
+      },
+      "titleFormatted": {
+        "en": "Set the soil moisture to [[percent]] %"
+      },
+      "hint": {
+        "en": "Tells smart watering how wet the soil is, so it can replan. Only for zones with smart watering enabled."
+      },
+      "args": [
+        {
+          "name": "percent",
+          "type": "number",
+          "min": 0,
+          "max": 100,
+          "placeholder": {
+            "en": "50"
+          }
+        }
+      ]
+    }
+  ]
+}

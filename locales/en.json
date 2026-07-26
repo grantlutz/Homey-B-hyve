@@ -1,0 +1,15 @@
+{
+  "errors": {
+    "not_connected": "B-hyve cloud connection is down — try again shortly",
+    "no_credentials": "Log in with your B-hyve account first",
+    "not_smart_zone": "Smart watering is not enabled for this zone",
+    "manual_mode": "Manual mode is set by starting a watering — choose Auto or Off",
+    "auth_failed": "B-hyve login expired — repair the device to log in again"
+  },
+  "program": {
+    "disabled": "Currently disabled"
+  },
+  "next_start": {
+    "rain_delayed": "Rain delayed"
+  }
+}

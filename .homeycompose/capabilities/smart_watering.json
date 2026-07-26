@@ -1,0 +1,16 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Smart watering"
+  },
+  "titleTrue": {
+    "en": "Enabled"
+  },
+  "titleFalse": {
+    "en": "Disabled"
+  },
+  "getable": true,
+  "setable": true,
+  "uiComponent": "toggle",
+  "icon": "/assets/capabilities/smart.svg"
+}

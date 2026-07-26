@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Next watering"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/capabilities/next_start.svg"
+}

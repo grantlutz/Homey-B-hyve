@@ -1,0 +1,17 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Watering time remaining"
+  },
+  "units": {
+    "en": "min"
+  },
+  "min": 0,
+  "max": 1440,
+  "decimals": 0,
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true,
+  "icon": "/assets/capabilities/timer.svg"
+}

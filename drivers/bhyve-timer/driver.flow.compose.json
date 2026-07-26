@@ -1,0 +1,276 @@
+{
+  "triggers": [
+    {
+      "id": "rain_delay_started",
+      "title": {
+        "en": "Rain delay started"
+      },
+      "tokens": [
+        {
+          "name": "hours",
+          "type": "number",
+          "title": {
+            "en": "Hours"
+          },
+          "example": 24
+        },
+        {
+          "name": "cause",
+          "type": "string",
+          "title": {
+            "en": "Cause"
+          },
+          "example": "auto"
+        },
+        {
+          "name": "weather",
+          "type": "string",
+          "title": {
+            "en": "Weather type"
+          },
+          "example": "rain"
+        }
+      ]
+    },
+    {
+      "id": "rain_delay_ended",
+      "title": {
+        "en": "Rain delay ended"
+      }
+    },
+    {
+      "id": "mode_changed",
+      "title": {
+        "en": "Mode changed"
+      },
+      "tokens": [
+        {
+          "name": "mode",
+          "type": "string",
+          "title": {
+            "en": "Mode"
+          },
+          "example": "auto"
+        }
+      ]
+    },
+    {
+      "id": "station_fault",
+      "title": {
+        "en": "Station fault detected"
+      },
+      "tokens": [
+        {
+          "name": "faults",
+          "type": "string",
+          "title": {
+            "en": "Faults"
+          },
+          "example": "short_circuit"
+        }
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "id": "rain_delay_is_active",
+      "title": {
+        "en": "Rain delay !{{is|isn't}} active"
+      }
+    },
+    {
+      "id": "mode_is",
+      "title": {
+        "en": "Mode !{{is|isn't}} ..."
+      },
+      "titleFormatted": {
+        "en": "Mode !{{is|isn't}} [[mode]]"
+      },
+      "args": [
+        {
+          "name": "mode",
+          "type": "dropdown",
+          "values": [
+            {
+              "id": "auto",
+              "title": {
+                "en": "Auto"
+              }
+            },
+            {
+              "id": "off",
+              "title": {
+                "en": "Off"
+              }
+            },
+            {
+              "id": "manual",
+              "title": {
+                "en": "Manual"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "program_is_enabled",
+      "title": {
+        "en": "A program !{{is|isn't}} enabled"
+      },
+      "titleFormatted": {
+        "en": "Program [[program]] !{{is|isn't}} enabled"
+      },
+      "args": [
+        {
+          "name": "program",
+          "type": "autocomplete",
+          "placeholder": {
+            "en": "Program..."
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "set_rain_delay",
+      "title": {
+        "en": "Set a rain delay"
+      },
+      "titleFormatted": {
+        "en": "Delay watering for [[hours]] hours"
+      },
+      "args": [
+        {
+          "name": "hours",
+          "type": "number",
+          "min": 1,
+          "max": 999,
+          "placeholder": {
+            "en": "24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cancel_rain_delay",
+      "title": {
+        "en": "Cancel the rain delay"
+      }
+    },
+    {
+      "id": "set_mode",
+      "title": {
+        "en": "Set the mode"
+      },
+      "titleFormatted": {
+        "en": "Set the mode to [[mode]]"
+      },
+      "args": [
+        {
+          "name": "mode",
+          "type": "dropdown",
+          "values": [
+            {
+              "id": "auto",
+              "title": {
+                "en": "Auto"
+              }
+            },
+            {
+              "id": "off",
+              "title": {
+                "en": "Off"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "run_program",
+      "title": {
+        "en": "Run a program"
+      },
+      "titleFormatted": {
+        "en": "Run program [[program]]"
+      },
+      "args": [
+        {
+          "name": "program",
+          "type": "autocomplete",
+          "placeholder": {
+            "en": "Program..."
+          }
+        }
+      ]
+    },
+    {
+      "id": "set_program_enabled",
+      "title": {
+        "en": "Enable or disable a program"
+      },
+      "titleFormatted": {
+        "en": "[[state]] program [[program]]"
+      },
+      "args": [
+        {
+          "name": "program",
+          "type": "autocomplete",
+          "placeholder": {
+            "en": "Program..."
+          }
+        },
+        {
+          "name": "state",
+          "type": "dropdown",
+          "values": [
+            {
+              "id": "enable",
+              "title": {
+                "en": "Enable"
+              }
+            },
+            {
+              "id": "disable",
+              "title": {
+                "en": "Disable"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_program_budget",
+      "title": {
+        "en": "Set a program's watering budget"
+      },
+      "titleFormatted": {
+        "en": "Set program [[program]] budget to [[budget]] %"
+      },
+      "hint": {
+        "en": "Scales all run times of the program: 100% is normal, 50% waters half as long."
+      },
+      "args": [
+        {
+          "name": "program",
+          "type": "autocomplete",
+          "placeholder": {
+            "en": "Program..."
+          }
+        },
+        {
+          "name": "budget",
+          "type": "number",
+          "min": 0,
+          "max": 200,
+          "placeholder": {
+            "en": "100"
+          }
+        }
+      ]
+    }
+  ]
+}

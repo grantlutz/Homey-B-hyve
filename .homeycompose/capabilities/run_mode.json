@@ -1,0 +1,30 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Mode"
+  },
+  "values": [
+    {
+      "id": "auto",
+      "title": {
+        "en": "Auto"
+      }
+    },
+    {
+      "id": "off",
+      "title": {
+        "en": "Off"
+      }
+    },
+    {
+      "id": "manual",
+      "title": {
+        "en": "Manual"
+      }
+    }
+  ],
+  "getable": true,
+  "setable": true,
+  "uiComponent": "picker",
+  "icon": "/assets/capabilities/mode.svg"
+}

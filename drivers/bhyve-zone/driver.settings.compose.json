@@ -1,0 +1,34 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Zone information"
+    },
+    "children": [
+      {
+        "id": "station",
+        "type": "label",
+        "label": {
+          "en": "Station number"
+        },
+        "value": ""
+      },
+      {
+        "id": "sprinkler_type",
+        "type": "label",
+        "label": {
+          "en": "Sprinkler type"
+        },
+        "value": ""
+      },
+      {
+        "id": "timer_name",
+        "type": "label",
+        "label": {
+          "en": "Timer"
+        },
+        "value": ""
+      }
+    ]
+  }
+]

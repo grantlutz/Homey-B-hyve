@@ -1,0 +1,42 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Sensor information"
+    },
+    "children": [
+      {
+        "id": "location",
+        "type": "label",
+        "label": {
+          "en": "Location"
+        },
+        "value": ""
+      },
+      {
+        "id": "auto_shutoff",
+        "type": "label",
+        "label": {
+          "en": "Auto shut-off"
+        },
+        "value": ""
+      },
+      {
+        "id": "temp_low",
+        "type": "label",
+        "label": {
+          "en": "Low temperature alert"
+        },
+        "value": ""
+      },
+      {
+        "id": "temp_high",
+        "type": "label",
+        "label": {
+          "en": "High temperature alert"
+        },
+        "value": ""
+      }
+    ]
+  }
+]
