@@ -6,7 +6,7 @@ Complete inventory of what the Home Assistant integration ([sebr/bhyve-home-assi
 
 | Hardware | Orbit `type` | HA treatment | Homey treatment |
 |---|---|---|---|
-| Hose faucet timers (HT-25/21004, XD; via Wi-Fi hub) | `sprinkler_timer` | 1 device, 1 zone valve | **Zone device** (driver `bhyve-zone`, class `sprinkler`) + controller state merged in (single-zone: one device is the whole product) |
+| Hose faucet timers (HT-25/21004, XD; via Wi-Fi hub) | `sprinkler_timer` | 1 device, 1 zone valve | **Timer device + one zone device** (uniform with multi-zone — see As-built notes) |
 | Indoor/outdoor multi-zone controllers (57946 6-zone, 57925 8-zone, 57995 XR 16-zone) | `sprinkler_timer` | 1 device, N zone valves + device sensors | **Controller device** (driver `bhyve-timer`) + one **zone device per station** |
 | Flood/temp sensors (Orbit 71000) | `flood_sensor` | binary sensors + temp/RSSI/battery | **Flood sensor device** (driver `bhyve-flood-sensor`, class `sensor`) |
 | Wi-Fi hub / gateway | `bridge` | connectivity binary sensor | Not a device; used internally for availability. *(Optional later: expose as device with `alarm_connectivity`.)* |
@@ -101,6 +101,20 @@ Free cards come with built-in capabilities (`onoff`, `alarm_water`, `measure_bat
 | Availability = `is_connected` | `setAvailable()/setUnavailable()` per device |
 | Device registry (model, fw, MAC, via bridge) | Device settings labels: model (`hardware_version`), firmware, MAC |
 | Diagnostics with location redaction | `this.log` diagnostics; never log tokens, location fields, or `watering_plan` |
+
+## As-built notes (v0.1.0)
+
+Deviations from and additions to the plan above, decided during implementation and review:
+
+- **Uniform two-tile model.** Every `sprinkler_timer` — including single-zone hose timers — pairs as one `bhyve-timer` device plus one `bhyve-zone` device per station. This keeps all controller-level flow cards (rain delay, mode, programs) on one driver with no duplication; the earlier "single-zone timers collapse into one device" idea was dropped.
+- **Poll fires triggers too.** The 5-minute reconciliation poll diffs old vs. new state and fires the same watering/rain-delay/mode/fault flow triggers as the WebSocket path, so missed push events don't silently swallow automations.
+- **WS-outage availability**: devices go unavailable 30 s after the push socket drops (grace period against flapping) and recover on reconnect + resync.
+- **Auth failure halts traffic**: a rejected login tears down the socket and poll instead of retrying a bad password against Orbit every 5 minutes; devices show "repair" messaging.
+- **Extra tokens/conditions**: watering triggers carry zone name, station, and the resolved program *name*; a "watering is held by the rain sensor" condition exposes `rain_sensor_hold`; the next-watering text appends upcoming program letters.
+- **Adaptive capabilities**: `measure_battery`/`alarm_battery` are removed on mains-powered controllers and `measure_moisture` on zones without landscape calibration, instead of showing blank values.
+- **Info labels**: model/firmware/MAC on timers and flood sensors, last-connected on timers.
+- **Bridge matching dropped**: per-device `is_connected` plus WS-outage handling covers availability; `device_gateway_topic` is unused.
+- **Skipped as niche**: `battery_charging_state` (B-hyve battery models don't charge), program created/deleted app-level triggers.
 
 ## Explicitly not ported (v1)
 

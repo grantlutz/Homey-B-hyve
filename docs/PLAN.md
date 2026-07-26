@@ -2,6 +2,8 @@
 
 Port of [sebr/bhyve-home-assistant](https://github.com/sebr/bhyve-home-assistant) to a Homey Pro app (Apps SDK v3). Companion docs: [FEATURES.md](FEATURES.md) (what to build), [ORBIT-API.md](ORBIT-API.md) (protocol).
 
+> **Status (2026-07-26):** M0–M5 built in one session (M1's live smoke test and M5's product photos/soak test still pending real hardware). Architecture changed to a uniform two-tile model — see "As-built notes" in FEATURES.md. M6 (publish) not started.
+
 ## Key decisions
 
 | Decision | Choice | Rationale |

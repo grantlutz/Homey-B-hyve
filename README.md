@@ -4,14 +4,15 @@ A [Homey Pro](https://homey.app) app for **Orbit B-hyve** smart watering product
 
 This project is a full port of the [Home Assistant B-hyve integration](https://github.com/sebr/bhyve-home-assistant) to the Homey Apps SDK v3.
 
-> **Status: 🚧 Planning complete, ready to build.** Research and architecture docs are in [`docs/`](docs/) — see [PLAN.md](docs/PLAN.md) for milestones. Implementation starts at M0 (scaffold).
+> **Status: ✅ v0.1.0 implemented** — validates at Homey publish level, 15 unit tests, reviewed in two adversarial passes. Awaiting live testing against real B-hyve hardware. See [docs/FEATURES.md](docs/FEATURES.md) for the complete feature matrix.
 
-## Goals
+## Features
 
-- Pair your Orbit B-hyve account with Homey using your B-hyve email/password.
-- Expose each B-hyve timer and each watering zone as a Homey device with real-time state (via Orbit's WebSocket push API — no polling lag).
-- Start/stop watering, run programs, set rain delays, and react to watering events from Homey Flows.
-- Surface battery levels, flood/leak alarms, and device status.
+- **Pairing** with your B-hyve email/password (`login_credentials` flow, with repair/re-login support on every driver).
+- **Three drivers**: sprinkler timer (mode, rain delay, next watering, faults, battery), watering zone (start/stop with duration, time remaining, soil moisture, water meter, smart watering), and flood sensor (water & temperature alarms, temperature, signal strength, battery).
+- **Real-time push** via Orbit's WebSocket (25 s keepalive, 5→300 s backoff reconnect) with a 5-minute reconciliation poll that also fires missed flow triggers.
+- **Flow cards**: watering started/finished (zone, station, program, minutes, gallons/litres tokens), rain delay start/end/set/cancel, mode changed/set, run program, enable/disable program, program budget, soil moisture, rain-sensor hold condition — programs picked via autocomplete.
+- **Resilience**: devices go unavailable on cloud/socket outage and recover automatically; a rejected password halts all traffic until repaired.
 
 ## Documentation
 
