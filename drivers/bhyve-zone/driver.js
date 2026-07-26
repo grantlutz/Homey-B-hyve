@@ -59,8 +59,13 @@ class BhyveZoneDriver extends Homey.Driver {
       const history = await app.client.getHistory(deviceId, { fresh: true });
       app.store.setHistory(deviceId, history);
       const lastRun = app.store.getLastRun(deviceId, station);
-      // Only trust the history entry if it's from this run.
-      if (lastRun && (!startedAt || (lastRun.start_time || '') >= startedAt)) {
+      // Only trust the history entry if it's from this run. Compare as
+      // epochs — history and websocket timestamps may differ in format —
+      // with a minute of tolerance for second-truncation.
+      const lastTs = Date.parse(lastRun?.start_time);
+      const startTs = Date.parse(startedAt);
+      if (lastRun && (!Number.isFinite(startTs)
+        || (Number.isFinite(lastTs) && lastTs >= startTs - 60000))) {
         minutes = Number(lastRun.run_time) || 0;
         gallons = Number(lastRun.water_volume_gal) || 0;
         program = lastRun.program || program;

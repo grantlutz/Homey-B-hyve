@@ -59,14 +59,15 @@ class BhyveApp extends Homey.App {
   async connect() {
     if (this.client) return;
     this.authFailed = false;
-    this.client = new OrbitClient({
+    const client = new OrbitClient({
       email: this.homey.settings.get('email'),
       password: this.homey.settings.get('password'),
       token: this.homey.settings.get('token'),
       log: this.log.bind(this),
     });
-    this.client.on('token', token => this.homey.settings.set('token', token));
-    this.client.on('auth_failed', () => this._onAuthFailed());
+    this.client = client;
+    client.on('token', token => this.homey.settings.set('token', token));
+    client.on('auth_failed', () => this._onAuthFailed());
 
     // A transient failure here must not leave the app half-connected —
     // the websocket 'connected' handler and the poll timer both retry.
@@ -76,6 +77,10 @@ class BhyveApp extends Homey.App {
       if (err instanceof OrbitAuthError) throw err;
       this.error(`Initial refresh failed, will retry: ${err.message}`);
     }
+
+    // A pairing/repair during the await above may have torn this attempt
+    // down and started a new one — don't stack a second socket and poll.
+    if (this.client !== client) return;
 
     this.ws = new OrbitWebSocket({
       getToken: () => this.client?.token,
@@ -133,6 +138,9 @@ class BhyveApp extends Homey.App {
   _onAuthFailed() {
     this.authFailed = true;
     this.error('B-hyve authentication failed — devices need repair');
+    // Stop polling and reconnecting: every retry would re-send the rejected
+    // password to Orbit's login endpoint. Repair re-establishes everything.
+    this._teardown();
     this.emitToDevices();
   }
 
