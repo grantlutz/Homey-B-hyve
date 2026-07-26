@@ -2,6 +2,7 @@
 
 const BhyveDevice = require('../../lib/BhyveDevice');
 const { StateStore } = require('../../lib/StateStore');
+const C = require('../../lib/const');
 
 const LOW_BATTERY_PCT = 10;
 
@@ -17,7 +18,7 @@ class BhyveTimerDevice extends BhyveDevice {
 
     this.registerCapabilityListener('rain_delay_active', async value => {
       const hours = value
-        ? (this.getSetting('default_rain_delay_hours') || 24)
+        ? (this.getSetting('default_rain_delay_hours') || C.DEFAULT_RAIN_DELAY_HOURS)
         : 0;
       await this.app.setRainDelay(this.orbitDeviceId, hours);
     });
@@ -48,7 +49,7 @@ class BhyveTimerDevice extends BhyveDevice {
     await this.safeSet('rain_delay_active', (status.rain_delay || 0) > 0);
     this._syncRainDelayRemaining(device);
 
-    await this.safeSet('next_start', this._formatNextStart(status));
+    await this.safeSet('next_start', this.formatNextStart(status));
     await this.safeSet('alarm_generic', (status.station_faults || []).length > 0);
 
     // Battery only exists on hose timers; drop the capabilities on mains models.
@@ -66,7 +67,17 @@ class BhyveTimerDevice extends BhyveDevice {
       firmware: device.firmware_version || '',
       mac: device.mac_address || '',
       stations: String(device.num_stations || (device.zones || []).length || 1),
+      last_seen: this._formatLastSeen(device),
     }).catch(() => { /* settings may be mid-edit */ });
+  }
+
+  _formatLastSeen(device) {
+    if (!device.last_connected_at) return '—';
+    const date = new Date(device.last_connected_at);
+    if (Number.isNaN(date.getTime())) return '—';
+    return date.toLocaleString(this.homey.i18n.getLanguage(), {
+      timeZone: this.homey.clock.getTimezone(),
+    });
   }
 
   _syncRainDelayRemaining(device) {
@@ -85,20 +96,6 @@ class BhyveTimerDevice extends BhyveDevice {
     this.safeSet('rain_delay_remaining', Math.round(remaining * 10) / 10).catch(this.error);
   }
 
-  _formatNextStart(status) {
-    if ((status.rain_delay || 0) > 0) return this.homey.__('next_start.rain_delayed');
-    if (!status.next_start_time) return '—';
-    const date = new Date(status.next_start_time);
-    if (Number.isNaN(date.getTime())) return '—';
-    return date.toLocaleString(this.homey.i18n.getLanguage(), {
-      timeZone: this.homey.clock.getTimezone(),
-      weekday: 'short',
-      hour: 'numeric',
-      minute: '2-digit',
-      month: 'short',
-      day: 'numeric',
-    });
-  }
 }
 
 module.exports = BhyveTimerDevice;

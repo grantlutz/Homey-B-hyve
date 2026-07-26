@@ -36,6 +36,9 @@ class BhyveFloodSensorDevice extends BhyveDevice {
       auto_shutoff: device.auto_shutoff ? 'On' : 'Off',
       temp_low: thresholds.low !== undefined ? `${thresholds.low} °F` : '—',
       temp_high: thresholds.high !== undefined ? `${thresholds.high} °F` : '—',
+      model: device.hardware_version || '',
+      firmware: device.firmware_version || '',
+      mac: device.mac_address || '',
     }).catch(() => { /* settings may be mid-edit */ });
   }
 }

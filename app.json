@@ -156,6 +156,38 @@
               "value": ""
             }
           ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Device information"
+          },
+          "children": [
+            {
+              "id": "model",
+              "type": "label",
+              "label": {
+                "en": "Model"
+              },
+              "value": ""
+            },
+            {
+              "id": "firmware",
+              "type": "label",
+              "label": {
+                "en": "Firmware"
+              },
+              "value": ""
+            },
+            {
+              "id": "mac",
+              "type": "label",
+              "label": {
+                "en": "MAC address"
+              },
+              "value": ""
+            }
+          ]
         }
       ]
     },
@@ -303,6 +335,14 @@
               "type": "label",
               "label": {
                 "en": "Zones"
+              },
+              "value": ""
+            },
+            {
+              "id": "last_seen",
+              "type": "label",
+              "label": {
+                "en": "Last connected"
               },
               "value": ""
             }
@@ -561,12 +601,28 @@
         },
         "tokens": [
           {
+            "name": "zone",
+            "type": "string",
+            "title": {
+              "en": "Zone"
+            },
+            "example": "Front lawn"
+          },
+          {
+            "name": "station",
+            "type": "number",
+            "title": {
+              "en": "Station"
+            },
+            "example": 1
+          },
+          {
             "name": "program",
             "type": "string",
             "title": {
               "en": "Program"
             },
-            "example": "a"
+            "example": "Morning schedule"
           },
           {
             "name": "minutes",
@@ -592,12 +648,28 @@
         },
         "tokens": [
           {
+            "name": "zone",
+            "type": "string",
+            "title": {
+              "en": "Zone"
+            },
+            "example": "Front lawn"
+          },
+          {
+            "name": "station",
+            "type": "number",
+            "title": {
+              "en": "Station"
+            },
+            "example": 1
+          },
+          {
             "name": "program",
             "type": "string",
             "title": {
               "en": "Program"
             },
-            "example": "a"
+            "example": "Morning schedule"
           },
           {
             "name": "minutes",
@@ -638,6 +710,19 @@
         "id": "rain_delay_is_active",
         "title": {
           "en": "Rain delay !{{is|isn't}} active"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bhyve-timer"
+          }
+        ]
+      },
+      {
+        "id": "rain_sensor_is_holding",
+        "title": {
+          "en": "Watering !{{is|isn't}} held by the rain sensor"
         },
         "args": [
           {

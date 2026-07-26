@@ -17,7 +17,9 @@ class BhyveZoneDriver extends Homey.Driver {
       const paired = this._findZone(device.id, station);
       if (!paired) return;
       this._wateringStarted.trigger(paired, {
-        program: program || 'manual',
+        zone: paired.getName(),
+        station,
+        program: app.programDisplayName(device.id, program),
         minutes: runTimeMinutes,
       }).catch(this.error);
     });
@@ -74,7 +76,9 @@ class BhyveZoneDriver extends Homey.Driver {
     }
     await pairedDevice.recordWaterUsage(gallons);
     await this._wateringFinished.trigger(pairedDevice, {
-      program: program || 'manual',
+      zone: pairedDevice.getName(),
+      station,
+      program: app.programDisplayName(deviceId, program),
       minutes: Math.max(0, minutes),
       gallons,
       litres: Math.round(gallons * 3.78541 * 10) / 10,

@@ -79,6 +79,12 @@
       }
     },
     {
+      "id": "rain_sensor_is_holding",
+      "title": {
+        "en": "Watering !{{is|isn't}} held by the rain sensor"
+      }
+    },
+    {
       "id": "mode_is",
       "title": {
         "en": "Mode !{{is|isn't}} ..."

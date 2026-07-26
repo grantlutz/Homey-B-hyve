@@ -18,7 +18,9 @@ class BhyveApp extends Homey.App {
     this.client = null;
     this.ws = null;
     this._pollTimer = null;
+    this._wsDownTimer = null;
     this.authFailed = false;
+    this.wsDown = false;
 
     if (this.hasCredentials()) {
       this.connect().catch(err => this.error(`Startup connect failed: ${err.message}`));
@@ -81,8 +83,24 @@ class BhyveApp extends Homey.App {
     });
     this.ws.on('message', message => this.store.applyEvent(message));
     this.ws.on('connected', () => {
+      if (this._wsDownTimer) {
+        this.homey.clearTimeout(this._wsDownTimer);
+        this._wsDownTimer = null;
+      }
+      const wasDown = this.wsDown;
+      this.wsDown = false;
       // Resync: events may have been missed while the socket was down.
       this.refresh({ fresh: true }).catch(err => this.error(`Resync failed: ${err.message}`));
+      if (wasDown) this.emitToDevices();
+    });
+    this.ws.on('disconnected', () => {
+      // Grace period so quick reconnects don't flap device availability.
+      if (this._wsDownTimer || this.wsDown) return;
+      this._wsDownTimer = this.homey.setTimeout(() => {
+        this._wsDownTimer = null;
+        this.wsDown = true;
+        this.emitToDevices();
+      }, 30 * 1000);
     });
     this.ws.start();
 
@@ -97,6 +115,11 @@ class BhyveApp extends Homey.App {
       this.homey.clearInterval(this._pollTimer);
       this._pollTimer = null;
     }
+    if (this._wsDownTimer) {
+      this.homey.clearTimeout(this._wsDownTimer);
+      this._wsDownTimer = null;
+    }
+    this.wsDown = false;
     if (this.ws) {
       this.ws.stop();
       this.ws = null;
@@ -236,6 +259,14 @@ class BhyveApp extends Homey.App {
     await this.client.updateProgram(programId, { ...program, budget });
     program.budget = budget;
     this.store.emit('programs_changed');
+  }
+
+  /** Human name for a program slot letter ("a") on a device, or the letter. */
+  programDisplayName(deviceId, letter) {
+    if (!letter) return 'manual';
+    const program = this.store.getProgramsForDevice(deviceId)
+      .find(p => p.program === letter);
+    return program?.name || letter;
   }
 
   /** Autocomplete results for program args, scoped to one timer device. */

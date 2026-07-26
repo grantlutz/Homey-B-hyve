@@ -71,12 +71,19 @@ class BhyveZoneDevice extends BhyveDevice {
     // Smart watering is device-level since Orbit's 2025 API change.
     await this.safeSet('smart_watering', device.water_sense_mode === 'auto');
 
+    // Only smart-watering zones have calibrated landscape data — hide the
+    // moisture sensor entirely on the rest instead of showing a blank value.
     const moisture = this.app.store.getSoilMoisture(this.orbitDeviceId, this.station);
     if (moisture !== null) {
+      if (!this.hasCapability('measure_moisture')) {
+        await this.addCapability('measure_moisture').catch(this.error);
+      }
       await this.safeSet('measure_moisture', Math.round(moisture));
+    } else if (this.hasCapability('measure_moisture')) {
+      await this.removeCapability('measure_moisture').catch(this.error);
     }
 
-    await this.safeSet('next_start', this._formatNextStart(status));
+    await this.safeSet('next_start', this.formatNextStart(status));
 
     const zone = this.app.store.getZone(this.orbitDeviceId, this.station);
     const presetSec = device.manual_preset_runtime_sec;
@@ -86,7 +93,7 @@ class BhyveZoneDevice extends BhyveDevice {
         sprinkler_type: zone.sprinkler_type || '',
         timer_name: device.name || '',
       } : {}),
-      ...(presetSec ? { default_watering_minutes: Math.round(presetSec / 60) } : {}),
+      ...(presetSec ? { default_watering_minutes: Math.max(1, Math.round(presetSec / 60)) } : {}),
     }).catch(() => { /* settings may be mid-edit */ });
   }
 
@@ -124,20 +131,6 @@ class BhyveZoneDevice extends BhyveDevice {
     }
   }
 
-  _formatNextStart(status) {
-    if ((status.rain_delay || 0) > 0) return this.homey.__('next_start.rain_delayed');
-    if (!status.next_start_time) return '—';
-    const date = new Date(status.next_start_time);
-    if (Number.isNaN(date.getTime())) return '—';
-    return date.toLocaleString(this.homey.i18n.getLanguage(), {
-      timeZone: this.homey.clock.getTimezone(),
-      weekday: 'short',
-      hour: 'numeric',
-      minute: '2-digit',
-      month: 'short',
-      day: 'numeric',
-    });
-  }
 }
 
 module.exports = BhyveZoneDevice;

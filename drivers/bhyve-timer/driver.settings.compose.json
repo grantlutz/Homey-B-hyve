@@ -60,6 +60,14 @@
           "en": "Zones"
         },
         "value": ""
+      },
+      {
+        "id": "last_seen",
+        "type": "label",
+        "label": {
+          "en": "Last connected"
+        },
+        "value": ""
       }
     ]
   }

@@ -7,12 +7,28 @@
       },
       "tokens": [
         {
+          "name": "zone",
+          "type": "string",
+          "title": {
+            "en": "Zone"
+          },
+          "example": "Front lawn"
+        },
+        {
+          "name": "station",
+          "type": "number",
+          "title": {
+            "en": "Station"
+          },
+          "example": 1
+        },
+        {
           "name": "program",
           "type": "string",
           "title": {
             "en": "Program"
           },
-          "example": "a"
+          "example": "Morning schedule"
         },
         {
           "name": "minutes",
@@ -31,12 +47,28 @@
       },
       "tokens": [
         {
+          "name": "zone",
+          "type": "string",
+          "title": {
+            "en": "Zone"
+          },
+          "example": "Front lawn"
+        },
+        {
+          "name": "station",
+          "type": "number",
+          "title": {
+            "en": "Station"
+          },
+          "example": 1
+        },
+        {
           "name": "program",
           "type": "string",
           "title": {
             "en": "Program"
           },
-          "example": "a"
+          "example": "Morning schedule"
         },
         {
           "name": "minutes",

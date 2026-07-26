@@ -44,6 +44,12 @@ class BhyveTimerDriver extends Homey.Driver {
     this.homey.flow.getConditionCard('rain_delay_is_active')
       .registerRunListener(async args => args.device.getCapabilityValue('rain_delay_active') === true);
 
+    this.homey.flow.getConditionCard('rain_sensor_is_holding')
+      .registerRunListener(async args => {
+        const device = app.store.getDevice(args.device.orbitDeviceId);
+        return device?.status?.rain_sensor_hold === true;
+      });
+
     this.homey.flow.getConditionCard('mode_is')
       .registerRunListener(async args => args.device.getCapabilityValue('run_mode') === args.mode);
 
