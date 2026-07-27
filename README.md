@@ -18,11 +18,19 @@ This project is a full port of the [Home Assistant B-hyve integration](https://g
 
 | Document | Purpose |
 |---|---|
-| `docs/FEATURES.md` | Complete feature and functionality inventory of the Home Assistant integration, and how each maps to Homey |
-| `docs/PLAN.md` | Build plan: architecture, drivers, capabilities, flow cards, milestones |
-| `docs/ORBIT-API.md` | Orbit B-hyve cloud REST + WebSocket API reference |
+| [`docs/USER-GUIDE.md`](docs/USER-GUIDE.md) | **How to use the app**: installation, pairing, watering, rain delays, programs, flow card reference, troubleshooting |
+| [`docs/FEATURES.md`](docs/FEATURES.md) | Complete feature inventory of the Home Assistant integration, how each maps to Homey, and as-built notes |
+| [`docs/PLAN.md`](docs/PLAN.md) | Build plan: architecture, drivers, capabilities, flow cards, milestones |
+| [`docs/ORBIT-API.md`](docs/ORBIT-API.md) | Orbit B-hyve cloud REST + WebSocket API reference |
 
-*(These are written as part of the planning phase and kept up to date as the app is built.)*
+## Quick start
+
+1. Install: `homey app install` from a clone of this repo (see the [User Guide](docs/USER-GUIDE.md#1-installation)).
+2. Add devices: **Devices → + → Orbit B-hyve → B-hyve Sprinkler Timer**, log in with your B-hyve account, and add your timers.
+3. Add the zones: repeat with **B-hyve Watering Zone** (login is skipped) — the zone tiles are where watering is controlled, including the "Water for" slider for manual runs.
+4. Flood sensors: repeat with **B-hyve Flood Sensor**.
+
+Full instructions for every function: **[docs/USER-GUIDE.md](docs/USER-GUIDE.md)**.
 
 ## Development
 
