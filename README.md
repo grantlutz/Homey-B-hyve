@@ -42,6 +42,11 @@ homey app run          # run on your Homey Pro during development
 homey app validate     # validate the app manifest
 ```
 
+## Support
+
+- **Community forum**: [[APP][Pro] B-hyve — Orbit smart watering (unofficial)](https://community.homey.app/t/b-hyve-orbit-smart-watering-unofficial/157617)
+- **Bug reports**: [GitHub issues](https://github.com/grantlutz/Homey-B-hyve/issues)
+
 ## Credits
 
 - [sebr/bhyve-home-assistant](https://github.com/sebr/bhyve-home-assistant) — the Home Assistant integration this port is based on.
