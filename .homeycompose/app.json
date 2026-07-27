@@ -5,7 +5,7 @@
   "sdk": 3,
   "platforms": ["local"],
   "name": {
-    "en": "Orbit B-hyve"
+    "en": "B-hyve"
   },
   "description": {
     "en": "Smart watering with Orbit B-hyve timers and flood sensors"
