@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a86c8"/>
+      <stop offset="1" stop-color="#0d4f78"/>
+    </linearGradient>
+    <linearGradient id="drop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#cfe9f8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="700" fill="url(#bg)"/>
+  <!-- spray arcs -->
+  <g fill="none" stroke="#ffffff" stroke-linecap="round">
+    <path d="M500 430 C 380 300, 300 260, 190 250" stroke-width="10" opacity="0.55"/>
+    <path d="M500 430 C 420 270, 380 210, 320 150" stroke-width="10" opacity="0.7"/>
+    <path d="M500 430 C 500 260, 500 190, 500 120" stroke-width="10" opacity="0.85"/>
+    <path d="M500 430 C 580 270, 620 210, 680 150" stroke-width="10" opacity="0.7"/>
+    <path d="M500 430 C 620 300, 700 260, 810 250" stroke-width="10" opacity="0.55"/>
+  </g>
+  <!-- droplets on arcs -->
+  <g fill="#ffffff">
+    <circle cx="190" cy="250" r="14" opacity="0.55"/>
+    <circle cx="320" cy="150" r="16" opacity="0.7"/>
+    <circle cx="500" cy="120" r="18" opacity="0.85"/>
+    <circle cx="680" cy="150" r="16" opacity="0.7"/>
+    <circle cx="810" cy="250" r="14" opacity="0.55"/>
+    <circle cx="255" cy="205" r="8" opacity="0.45"/>
+    <circle cx="410" cy="140" r="9" opacity="0.6"/>
+    <circle cx="590" cy="140" r="9" opacity="0.6"/>
+    <circle cx="745" cy="205" r="8" opacity="0.45"/>
+  </g>
+  <!-- sprinkler head -->
+  <g>
+    <rect x="470" y="400" width="60" height="80" rx="12" fill="#e8eef2"/>
+    <rect x="455" y="465" width="90" height="40" rx="14" fill="#d2dbe1"/>
+  </g>
+  <!-- lawn -->
+  <path d="M0 560 Q 250 505 500 545 T 1000 540 L 1000 700 L 0 700 Z" fill="#2f9e63"/>
+  <path d="M0 585 Q 250 535 500 570 T 1000 565 L 1000 700 L 0 700 Z" fill="#27824f" opacity="0.85"/>
+  <!-- big droplet accent -->
+  <path d="M846 372 C 846 340, 880 300, 880 300 C 880 300, 914 340, 914 372 A 34 34 0 1 1 846 372 Z" fill="url(#drop)" opacity="0.95"/>
+</svg>

@@ -1,0 +1,12 @@
+# Artwork sources
+
+Original SVG sources for the store/driver PNGs. To re-render after edits (uses headless Chrome + sips on macOS):
+
+```bash
+CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+"$CHROME" --headless --disable-gpu --screenshot=app.png  --window-size=1000,700  "file://$PWD/app.svg"
+"$CHROME" --headless --disable-gpu --screenshot=timer.png --window-size=1000,1000 "file://$PWD/timer.svg"
+# ...then sips -z <h> <w> to produce each required size (see docs/PLAN.md image sizes)
+```
+
+All art is original (flat illustration style) — no Orbit marketing photos, so nothing here has licensing strings attached.

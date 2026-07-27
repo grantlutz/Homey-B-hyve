@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <rect width="1000" height="1000" fill="#ffffff"/>
+  <!-- sensor puck -->
+  <g>
+    <ellipse cx="500" cy="520" rx="230" ry="70" fill="#c6d0d7"/>
+    <rect x="270" y="380" width="460" height="140" rx="40" fill="#e9eef1"/>
+    <rect x="270" y="380" width="460" height="140" rx="40" fill="none" stroke="#c6d0d7" stroke-width="6"/>
+    <ellipse cx="500" cy="380" rx="230" ry="72" fill="#f4f7f9"/>
+    <ellipse cx="500" cy="380" rx="230" ry="72" fill="none" stroke="#c6d0d7" stroke-width="6"/>
+    <!-- top branding ring + LED -->
+    <ellipse cx="500" cy="380" rx="150" ry="46" fill="none" stroke="#1470a6" stroke-width="10"/>
+    <circle cx="500" cy="372" r="18" fill="#e5534b"/>
+    <!-- droplet mark -->
+    <path d="M478 402 C 478 388, 500 366, 500 366 C 500 366, 522 388, 522 402 A 22 22 0 1 1 478 402 Z" fill="#1a86c8" transform="translate(0,26)"/>
+  </g>
+  <!-- feet -->
+  <rect x="330" y="574" width="40" height="26" rx="10" fill="#8d9aa4"/>
+  <rect x="630" y="574" width="40" height="26" rx="10" fill="#8d9aa4"/>
+  <!-- water waves -->
+  <g fill="none" stroke="#1a86c8" stroke-width="18" stroke-linecap="round">
+    <path d="M170 700 q 55 -34 110 0 t 110 0 t 110 0 t 110 0 t 110 0 t 110 0" opacity="0.9"/>
+    <path d="M220 780 q 55 -34 110 0 t 110 0 t 110 0 t 110 0 t 110 0" opacity="0.5"/>
+  </g>
+</svg>

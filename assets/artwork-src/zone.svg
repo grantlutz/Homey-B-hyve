@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <rect width="1000" height="1000" fill="#ffffff"/>
+  <!-- spray arcs -->
+  <g fill="none" stroke="#1a86c8" stroke-linecap="round">
+    <path d="M500 440 C 400 330, 330 300, 235 295" stroke-width="14" opacity="0.5"/>
+    <path d="M500 440 C 435 300, 400 250, 350 200" stroke-width="14" opacity="0.7"/>
+    <path d="M500 440 C 500 290, 500 230, 500 165" stroke-width="14" opacity="0.9"/>
+    <path d="M500 440 C 565 300, 600 250, 650 200" stroke-width="14" opacity="0.7"/>
+    <path d="M500 440 C 600 330, 670 300, 765 295" stroke-width="14" opacity="0.5"/>
+  </g>
+  <g fill="#1a86c8">
+    <circle cx="235" cy="295" r="17" opacity="0.5"/>
+    <circle cx="350" cy="200" r="19" opacity="0.7"/>
+    <circle cx="500" cy="165" r="21" opacity="0.9"/>
+    <circle cx="650" cy="200" r="19" opacity="0.7"/>
+    <circle cx="765" cy="295" r="17" opacity="0.5"/>
+    <circle cx="292" cy="248" r="10" opacity="0.4"/>
+    <circle cx="422" cy="180" r="11" opacity="0.55"/>
+    <circle cx="578" cy="180" r="11" opacity="0.55"/>
+    <circle cx="708" cy="248" r="10" opacity="0.4"/>
+  </g>
+  <!-- pop-up sprinkler -->
+  <rect x="462" y="420" width="76" height="150" rx="14" fill="#c6d0d7"/>
+  <rect x="452" y="432" width="96" height="26" rx="10" fill="#1470a6"/>
+  <rect x="430" y="560" width="140" height="120" rx="20" fill="#8d9aa4"/>
+  <rect x="418" y="668" width="164" height="36" rx="14" fill="#77848e"/>
+  <!-- lawn -->
+  <path d="M120 730 Q 500 690 880 730 L 880 800 Q 500 830 120 800 Z" fill="#2f9e63"/>
+  <!-- grass tufts -->
+  <g stroke="#27824f" stroke-width="14" stroke-linecap="round" fill="none">
+    <path d="M220 728 v -40"/><path d="M250 728 v -56"/><path d="M280 728 v -38"/>
+    <path d="M720 728 v -40"/><path d="M750 728 v -56"/><path d="M780 728 v -38"/>
+  </g>
+</svg>
