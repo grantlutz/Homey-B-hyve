@@ -1,5 +1,5 @@
 {
-  "name": "com.orbitbhyve",
+  "name": "io.github.grantlutz.bhyve",
   "version": "0.1.0",
   "description": "Orbit B-hyve for Homey Pro",
   "main": "app.js",

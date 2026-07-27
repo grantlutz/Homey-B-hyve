@@ -8,7 +8,7 @@ Port of [sebr/bhyve-home-assistant](https://github.com/sebr/bhyve-home-assistant
 
 | Decision | Choice | Rationale |
 |---|---|---|
-| App ID | `com.orbitbhyve` | Reverse-domain convention; matches community norms (e.g. `com.linktap`) |
+| App ID |  `io.github.grantlutz.bhyve` | Personal namespace (reverse-DNS of grantlutz.github.io) — avoids implying Orbit affiliation; renamed from com.orbitbhyve pre-publish |
 | Language | Plain JavaScript, SDK v3, Homey Compose | Simplest; `homey-apps-sdk-v3-types` for editor IntelliSense via JSDoc |
 | Min compatibility | `">=5.0.0"` | `sprinkler` class and all capabilities used are long-established |
 | Runtime deps | `ws` only | Node 18/22 on Homey has global `fetch`; `ws` is pure JS |

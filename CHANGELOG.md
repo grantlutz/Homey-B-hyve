@@ -7,7 +7,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); version
 
 ## [Unreleased]
 
-_Nothing yet._
+### Changed
+- App ID renamed from `com.orbitbhyve` to `io.github.grantlutz.bhyve` (reverse-DNS of a namespace we actually control) to make the unofficial status unambiguous. Done before first App Store publish, when an ID change is still possible. Sideload users must re-pair devices under the new app and remove the old one.
 
 ## [0.1.0] — 2026-07-27
 

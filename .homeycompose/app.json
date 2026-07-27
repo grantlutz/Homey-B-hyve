@@ -1,5 +1,5 @@
 {
-  "id": "com.orbitbhyve",
+  "id": "io.github.grantlutz.bhyve",
   "version": "0.1.0",
   "compatibility": ">=12.2.0",
   "sdk": 3,

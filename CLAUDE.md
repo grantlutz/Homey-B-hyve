@@ -1,6 +1,6 @@
 # Project conventions
 
-Homey Pro app (SDK v3) for Orbit B-hyve irrigation. App ID `com.orbitbhyve` (never change), display name "B-hyve".
+Homey Pro app (SDK v3) for Orbit B-hyve irrigation. App ID `io.github.grantlutz.bhyve` (never change), display name "B-hyve".
 
 ## Non-negotiables on every change
 
