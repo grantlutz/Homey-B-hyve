@@ -1,16 +1,20 @@
 {
   "id": "io.github.grantlutz.bhyve",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "compatibility": ">=12.2.0",
   "sdk": 3,
-  "platforms": ["local"],
+  "platforms": [
+    "local"
+  ],
   "name": {
     "en": "B-hyve"
   },
   "description": {
     "en": "Smart watering with Orbit B-hyve timers and flood sensors"
   },
-  "category": ["climate"],
+  "category": [
+    "climate"
+  ],
   "permissions": [],
   "brandColor": "#1470a6",
   "images": {

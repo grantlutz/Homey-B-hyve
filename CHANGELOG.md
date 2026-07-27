@@ -7,6 +7,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); version
 
 ## [Unreleased]
 
+_Nothing yet._
+
+## [0.1.1] — 2026-07-27
+
+First App Store submission.
+
 ### Changed
 - App ID renamed from `com.orbitbhyve` to `io.github.grantlutz.bhyve` (reverse-DNS of a namespace we actually control) to make the unofficial status unambiguous. Done before first App Store publish, when an ID change is still possible. Sideload users must re-pair devices under the new app and remove the old one.
 
@@ -26,5 +32,6 @@ Initial release. Full port of the Home Assistant B-hyve integration to Homey Pro
 - **Store readiness**: original SVG-based artwork for the app and all drivers (sources in `assets/artwork-src/`), App Store description (`README.txt`), community forum topic (157617) linked, publish-level validation green.
 - **Documentation**: user guide, feature matrix with as-built notes, build plan, Orbit cloud API reference.
 
-[Unreleased]: https://github.com/grantlutz/Homey-B-hyve/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/grantlutz/Homey-B-hyve/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/grantlutz/Homey-B-hyve/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/grantlutz/Homey-B-hyve/releases/tag/v0.1.0
