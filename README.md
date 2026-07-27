@@ -22,6 +22,7 @@ This project is a full port of the [Home Assistant B-hyve integration](https://g
 | [`docs/FEATURES.md`](docs/FEATURES.md) | Complete feature inventory of the Home Assistant integration, how each maps to Homey, and as-built notes |
 | [`docs/PLAN.md`](docs/PLAN.md) | Build plan: architecture, drivers, capabilities, flow cards, milestones |
 | [`docs/ORBIT-API.md`](docs/ORBIT-API.md) | Orbit B-hyve cloud REST + WebSocket API reference |
+| [`CHANGELOG.md`](CHANGELOG.md) | All notable changes per version (kept current with every commit) |
 
 ## Quick start
 
