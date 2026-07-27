@@ -31,7 +31,8 @@
   "bugs": {
     "url": "https://github.com/grantlutz/Homey-B-hyve/issues"
   },
-  "support": "https://github.com/grantlutz/Homey-B-hyve/issues",
+  "support": "https://community.homey.app/t/b-hyve-orbit-smart-watering-unofficial/157617",
+  "homeyCommunityTopicId": 157617,
   "drivers": [
     {
       "name": {
