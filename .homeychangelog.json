@@ -1,5 +1,8 @@
 {
   "0.1.1": {
     "en": "Initial release: B-hyve timers, watering zones with manual runs and water usage, flood sensors, rain delays, program control, and live push updates."
+  },
+  "0.1.2": {
+    "en": "Certification fixes: single battery capability per device, shorter store description, official product imagery, and unique icons."
   }
 }

@@ -9,7 +9,6 @@
     "rain_delay_remaining",
     "next_start",
     "measure_battery",
-    "alarm_battery",
     "alarm_generic"
   ],
   "capabilitiesOptions": {
@@ -20,10 +19,17 @@
     }
   },
   "energy": {
-    "batteries": ["AA", "AA"]
+    "batteries": [
+      "AA",
+      "AA"
+    ]
   },
-  "platforms": ["local"],
-  "connectivity": ["cloud"],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "cloud"
+  ],
   "images": {
     "small": "{{driverAssetsPath}}/images/small.png",
     "large": "{{driverAssetsPath}}/images/large.png",

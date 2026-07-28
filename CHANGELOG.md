@@ -9,6 +9,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); version
 
 _Nothing yet._
 
+## [0.1.2] — 2026-07-28
+
+Resubmission addressing App Store certification feedback.
+
+### Changed
+- Removed `alarm_battery` from timer and flood-sensor drivers (store rule: a device may use only one battery capability; `measure_battery` stays and low-battery status derives from it). Existing devices clean the capability off automatically.
+- Store readme (`README.txt`) trimmed to a two-paragraph plain-text summary.
+- App image replaced with an Orbit lifestyle photo (hose timer on faucet); driver images replaced with Orbit product photography on white (XR controller, Voyager II rotor, flood sensor) — per reviewer direction toward manufacturer imagery.
+- New app icon (hive hexagon + droplet) and a unique zone driver icon (sprinkler spray) — zone icon previously duplicated the app icon.
+
 ## [0.1.1] — 2026-07-27
 
 First App Store submission.
@@ -32,6 +42,7 @@ Initial release. Full port of the Home Assistant B-hyve integration to Homey Pro
 - **Store readiness**: original SVG-based artwork for the app and all drivers (sources in `assets/artwork-src/`), App Store description (`README.txt`), community forum topic (157617) linked, publish-level validation green.
 - **Documentation**: user guide, feature matrix with as-built notes, build plan, Orbit cloud API reference.
 
-[Unreleased]: https://github.com/grantlutz/Homey-B-hyve/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/grantlutz/Homey-B-hyve/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/grantlutz/Homey-B-hyve/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/grantlutz/Homey-B-hyve/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/grantlutz/Homey-B-hyve/releases/tag/v0.1.0

@@ -10,3 +10,7 @@ CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 ```
 
 All art is original (flat illustration style) — no Orbit marketing photos, so nothing here has licensing strings attached.
+
+## v0.1.2 store imagery
+
+Per App Store review feedback, the store PNGs were replaced with Orbit's own product/marketing photography (sourced from orbitonline.com product pages, cropped/padded — the reviewer directed us to manufacturer imagery). The SVGs here remain as fallback originals. Icons (`assets/icon.svg`, driver icons) are still original vector work.

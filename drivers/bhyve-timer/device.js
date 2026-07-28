@@ -4,7 +4,6 @@ const BhyveDevice = require('../../lib/BhyveDevice');
 const { StateStore } = require('../../lib/StateStore');
 const C = require('../../lib/const');
 
-const LOW_BATTERY_PCT = 10;
 
 class BhyveTimerDevice extends BhyveDevice {
 
@@ -52,14 +51,16 @@ class BhyveTimerDevice extends BhyveDevice {
     await this.safeSet('next_start', this.formatNextStart(status));
     await this.safeSet('alarm_generic', (status.station_faults || []).length > 0);
 
-    // Battery only exists on hose timers; drop the capabilities on mains models.
+    // Battery only exists on hose timers; drop the capability on mains models.
     const percent = StateStore.batteryPercent(device);
     if (percent === null) {
       if (this.hasCapability('measure_battery')) await this.removeCapability('measure_battery').catch(this.error);
       if (this.hasCapability('alarm_battery')) await this.removeCapability('alarm_battery').catch(this.error);
     } else {
+      // alarm_battery was removed in 0.1.2 (store rule: only one battery
+      // capability) — clean it off devices paired with older versions.
+      if (this.hasCapability('alarm_battery')) await this.removeCapability('alarm_battery').catch(this.error);
       await this.safeSet('measure_battery', Math.round(percent));
-      await this.safeSet('alarm_battery', percent <= LOW_BATTERY_PCT);
     }
 
     await this.setSettings({

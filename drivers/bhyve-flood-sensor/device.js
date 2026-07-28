@@ -3,7 +3,6 @@
 const BhyveDevice = require('../../lib/BhyveDevice');
 const { StateStore } = require('../../lib/StateStore');
 
-const LOW_BATTERY_PCT = 10;
 
 class BhyveFloodSensorDevice extends BhyveDevice {
 
@@ -26,8 +25,10 @@ class BhyveFloodSensorDevice extends BhyveDevice {
 
     const percent = StateStore.batteryPercent(device);
     if (percent !== null) {
+      // alarm_battery removed in 0.1.2 (store rule: only one battery
+      // capability) — clean it off devices paired with older versions.
+      if (this.hasCapability('alarm_battery')) await this.removeCapability('alarm_battery').catch(this.error);
       await this.safeSet('measure_battery', Math.round(percent));
-      await this.safeSet('alarm_battery', percent <= LOW_BATTERY_PCT);
     }
 
     const thresholds = device.temp_alarm_thresholds || {};

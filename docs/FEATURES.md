@@ -111,7 +111,7 @@ Deviations from and additions to the plan above, decided during implementation a
 - **WS-outage availability**: devices go unavailable 30 s after the push socket drops (grace period against flapping) and recover on reconnect + resync.
 - **Auth failure halts traffic**: a rejected login tears down the socket and poll instead of retrying a bad password against Orbit every 5 minutes; devices show "repair" messaging.
 - **Extra tokens/conditions**: watering triggers carry zone name, station, and the resolved program *name*; a "watering is held by the rain sensor" condition exposes `rain_sensor_hold`; the next-watering text appends upcoming program letters.
-- **Adaptive capabilities**: `measure_battery`/`alarm_battery` are removed on mains-powered controllers and `measure_moisture` on zones without landscape calibration, instead of showing blank values.
+- **Adaptive capabilities**: `measure_battery` is removed on mains-powered controllers (no separate `alarm_battery` — store rules allow only one battery capability) and `measure_moisture` on zones without landscape calibration, instead of showing blank values.
 - **Info labels**: model/firmware/MAC on timers and flood sensors, last-connected on timers.
 - **Manual runs from the device UI**: zones have a "Water for" slider (1–120 min, seeded from the device preset) that starts a manual run at the chosen duration directly from the device view, without needing a Flow.
 - **Bridge matching dropped**: per-device `is_connected` plus WS-outage handling covers availability; `device_gateway_topic` is unused.
